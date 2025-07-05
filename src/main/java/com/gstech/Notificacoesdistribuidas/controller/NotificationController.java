@@ -18,6 +18,4 @@ public class NotificationController {
         System.out.println("Notificacao enviada!");
         return ResponseEntity.ok().body(data);
     }
-
-
 }
