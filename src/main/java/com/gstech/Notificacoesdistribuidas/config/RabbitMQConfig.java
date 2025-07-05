@@ -33,55 +33,41 @@ public class RabbitMQConfig {
     @Value("${rabbitmq.routingKeys.push}")
     private String pushRoutingKey;
 
-
-
     @Bean
     public TopicExchange exchange() {
-
         return new TopicExchange(exchangeName);
     }
 
     @Bean
     public Queue emailQueue() {
-
         return new Queue(emailQueue);
     }
 
-
     @Bean
     public Queue smsQueue() {
-
         return new Queue(smsQueue);
     }
 
     @Bean
     public Queue pushQueue() {
-
         return new Queue(pushQueue);
     }
 
     @Bean
     public Binding emailBinding(Queue emailQueue, TopicExchange exchange) {
-
         return BindingBuilder.bind(emailQueue).to(exchange).with(emailRoutingKey);
     }
 
     @Bean
     public Binding smsBinding(Queue smsQueue, TopicExchange exchange) {
-
         return BindingBuilder.bind(smsQueue).to(exchange).with(smsRoutingKey);
     }
 
     @Bean
     public Binding pushBinding(Queue pushQueue, TopicExchange exchange) {
-
         return BindingBuilder.bind(pushQueue).to(exchange).with(pushRoutingKey);
     }
-
 }
-
-
-
 
 
 

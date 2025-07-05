@@ -1,4 +1,4 @@
-package com.gstech.Notificacoesdistribuidas;
+package com.gstech.Notificacoesdistribuidas.DTO;
 
 import com.gstech.Notificacoesdistribuidas.enums.NotificationType;
 import com.gstech.Notificacoesdistribuidas.enums.Recipient;

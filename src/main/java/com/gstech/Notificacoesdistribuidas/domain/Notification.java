@@ -2,10 +2,10 @@ package com.gstech.Notificacoesdistribuidas.domain;
 
 import com.gstech.Notificacoesdistribuidas.enums.NotificationType;
 import com.gstech.Notificacoesdistribuidas.enums.Recipient;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,10 +14,15 @@ public class Notification {
 
     @Id
     private UUID id;
+    @Enumerated(EnumType.STRING)
     private NotificationType notificationType;
+    @Enumerated(EnumType.STRING)
     private Recipient recipient;
     private String title;
     private String text_content;
+
+    @OneToMany(mappedBy = "idNotification")
+    private List<NotificationRecord> records = new ArrayList<>();
 
     public Notification() {
     }
@@ -68,5 +73,9 @@ public class Notification {
 
     public void setText_content(String text_content) {
         this.text_content = text_content;
+    }
+
+    public List<NotificationRecord> getRecords() {
+        return records;
     }
 }
